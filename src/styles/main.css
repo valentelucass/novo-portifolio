@@ -1,0 +1,23 @@
+/*
+ * AUTOINTRO: src/styles/main.css
+ * Objetivo: Arquivo agregador de estilos; importa base, layout e componentes para compor o tema final.
+ * Escopo: Regras de estilo deste arquivo e seu papel no tema visual geral.
+ */
+@import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap");
+
+@import "./base/tokens.css";
+@import "./base/reset.css";
+@import "./base/global.css";
+
+@import "./layout/intro.css";
+@import "./layout/sections.css";
+
+@import "./components/menu-escalonado.css";
+@import "./components/sobre.css";
+@import "./components/curriculo-folder.css";
+@import "./components/projetos.css";
+@import "./components/cards-github.css";
+@import "./components/skills-github.css";
+@import "./components/contato-flowing-menu.css";
+@import "./components/footer.css";
+@import "./components/liquid-glass-theme.css";

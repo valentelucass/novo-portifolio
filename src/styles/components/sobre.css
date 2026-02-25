@@ -1,0 +1,184 @@
+/*
+ * AUTOINTRO: src/styles/components/sobre.css
+ * Objetivo: Estilos da secao Sobre, cards informativos e organizacao visual do conteudo pessoal.
+ * Escopo: Regras de estilo deste arquivo e seu papel no tema visual geral.
+ */
+﻿/* ============================================
+   SECAO SOBRE - Masonry + Texto
+   ============================================ */
+
+/* ---------- Layout geral da secao ---------- */
+.sobre__titulo {
+  max-width: 13ch;
+}
+
+/* ---------- Container do masonry ---------- */
+.msb-wrapper {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+}
+
+.msb-list {
+  position: relative;
+  width: 100%;
+  /* height definida via JS */
+}
+
+/* ---------- Cada item do masonry ---------- */
+.msb-item {
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding: 5px;
+  cursor: default;
+}
+
+.msb-item__img {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 8px 40px -8px rgba(0, 0, 0, 0.55);
+  transition: box-shadow 0.3s ease, filter 0.4s ease;
+  filter: saturate(1.06) contrast(0.98) brightness(0.95);
+}
+
+.msb-item__img::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    linear-gradient(
+      145deg,
+      rgba(255, 188, 230, 0.2) 0%,
+      rgba(181, 211, 255, 0.18) 34%,
+      rgba(206, 255, 236, 0.18) 66%,
+      rgba(255, 245, 190, 0.16) 100%
+    );
+  mix-blend-mode: screen;
+  opacity: 0;
+  transform: scale(1.02);
+  transition: opacity 0.35s ease, transform 0.35s ease;
+}
+
+.msb-item:hover .msb-item__img {
+  box-shadow: 0 16px 60px -10px rgba(82, 39, 255, 0.35);
+  filter: saturate(1.18) brightness(1) contrast(0.96);
+}
+
+.msb-item:hover .msb-item__img::after {
+  opacity: 0.92;
+  transform: scale(1);
+}
+
+/* ---------- Bloco de texto biografico ---------- */
+.sobre__texto-bloco {
+  margin-top: clamp(3rem, 6vw, 5rem);
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2.5rem;
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.sobre__texto-bloco.visivel {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (min-width: 720px) {
+  .sobre__texto-bloco {
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem 4rem;
+  }
+}
+
+@media (min-width: 1000px) {
+  .sobre__texto-bloco {
+    grid-template-columns: 1.4fr 1fr;
+  }
+}
+
+/* ---------- Texto principal ---------- */
+.sobre__bio {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+.sobre__bio p {
+  color: var(--muted);
+  font-size: clamp(0.97rem, 1.5vw, 1.1rem);
+  line-height: 1.75;
+}
+
+.sobre__bio p strong {
+  color: var(--text);
+  font-weight: 600;
+}
+
+/* ---------- Coluna lateral: skills / info ---------- */
+.sobre__info {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.sobre__info-bloco {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.sobre__info-titulo {
+  font-size: 0.72rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #7c6ac4;
+}
+
+.sobre__info-lista {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.sobre__info-tag {
+  padding: 0.32rem 0.9rem;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(82, 39, 255, 0.08);
+  font-size: 0.85rem;
+  color: #c4b8f0;
+  white-space: nowrap;
+  transition: border-color 0.25s ease, background 0.25s ease;
+}
+
+.sobre__info-tag:hover {
+  border-color: rgba(82, 39, 255, 0.5);
+  background: rgba(82, 39, 255, 0.18);
+  color: #e0d8ff;
+}
+
+/* ---------- Linha divisoria interna ---------- */
+.sobre__divider {
+  width: 3rem;
+  height: 2px;
+  background: linear-gradient(90deg, #5227ff, transparent);
+  margin: 0.4rem 0 0;
+  border: none;
+}
+
+/* ---------- Responsividade extra mobile ---------- */
+@media (min-width: 520px) {
+  .sobre__titulo {
+    max-width: 16ch;
+  }
+}
+

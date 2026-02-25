@@ -1,0 +1,7 @@
+# AUTOINTRO: .vercelignore
+# Objetivo: Define arquivos e pastas que nao devem ser enviados ao fazer deploy via Vercel CLI.
+# Escopo: Cabecalho de referencia para leitura rapida do arquivo.
+.env
+.env.local
+.env.*.local
+node_modules

@@ -1,0 +1,39 @@
+# AUTOINTRO: .gitignore
+# Objetivo: Lista artefatos e arquivos locais que nao devem ser versionados no repositorio.
+# Escopo: Cabecalho de referencia para leitura rapida do arquivo.
+﻿# Environment (nunca versionar segredos)
+.env
+.env.local
+.env.*.local
+.env.development
+.env.production
+.env.test
+!.env.example
+
+# Dependencies
+node_modules/
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Build / cache
+dist/
+.next/
+out/
+coverage/
+.nyc_output/
+.cache/
+*.tsbuildinfo
+
+# Vercel
+.vercel/
+
+# Editor / OS
+.DS_Store
+Thumbs.db
+*.ide/
+.vscode/settings.json

@@ -1,0 +1,295 @@
+/*
+ * AUTOINTRO: src/styles/components/liquid-glass-theme.css
+ * Objetivo: Tema visual liquid glass compartilhado por botoes, cards, paineis e elementos interativos.
+ * Escopo: Regras de estilo deste arquivo e seu papel no tema visual geral.
+ */
+:root {
+  --lg-surface:
+    linear-gradient(150deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.03) 36%, rgba(255, 255, 255, 0) 64%),
+    linear-gradient(176deg, rgba(15, 18, 30, 0.72) 0%, rgba(9, 11, 21, 0.68) 100%);
+  --lg-surface-soft:
+    linear-gradient(145deg, rgba(255, 255, 255, 0.12) 0%, rgba(255, 255, 255, 0.035) 38%, rgba(255, 255, 255, 0) 72%),
+    linear-gradient(170deg, rgba(14, 17, 28, 0.56) 0%, rgba(8, 10, 18, 0.5) 100%);
+  --lg-border: rgba(194, 208, 255, 0.34);
+  --lg-border-soft: rgba(227, 235, 255, 0.2);
+  --lg-border-strong: rgba(214, 225, 255, 0.5);
+  --lg-text: #f4f7ff;
+  --lg-text-soft: #cfd8f6;
+  --lg-shadow:
+    0 16px 34px -26px rgba(0, 0, 0, 0.86),
+    0 0 0 1px rgba(181, 198, 255, 0.08) inset;
+  --lg-shadow-hover:
+    0 20px 36px -24px rgba(0, 0, 0, 0.86),
+    0 0 0 1px rgba(197, 214, 255, 0.16) inset,
+    0 0 18px -18px rgba(111, 153, 255, 0.4);
+  --lg-blur: 9px;
+}
+
+/* Glass base applied consistently to cards/buttons/chips/panels */
+.staggered-menu-panel,
+.sm-toggle,
+.sm-socials-link,
+.intro__tag,
+.intro__meta li,
+.intro__botao,
+.sobre__info-tag,
+.cvf-button,
+.ghc-shell,
+.ghc-btn,
+.ghc-nav-btn,
+.ghc-row__count,
+.ghc-tag,
+.ghc-tag--mais,
+.ghs-item,
+.ghs-state,
+.ghs-orb-value,
+.site-footer__inner,
+.icon-btn__front {
+  backdrop-filter: blur(var(--lg-blur)) saturate(132%);
+  -webkit-backdrop-filter: blur(var(--lg-blur)) saturate(132%);
+}
+
+.intro__veil {
+  border: 1px solid var(--lg-border-soft);
+  background: linear-gradient(150deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0) 58%);
+  box-shadow:
+    0 14px 30px -24px rgba(0, 0, 0, 0.82),
+    0 0 0 1px rgba(227, 235, 255, 0.08) inset;
+}
+
+.staggered-menu-panel {
+  background: var(--lg-surface);
+  color: var(--lg-text);
+  border-left: 1px solid var(--lg-border);
+  box-shadow:
+    -18px 0 34px -28px rgba(0, 0, 0, 0.84),
+    var(--lg-shadow);
+}
+
+[data-position="left"] .staggered-menu-panel {
+  border-left: none;
+  border-right: 1px solid var(--lg-border);
+  box-shadow:
+    18px 0 34px -28px rgba(0, 0, 0, 0.84),
+    var(--lg-shadow);
+}
+
+.sm-prelayer {
+  opacity: 0.84;
+  filter: saturate(106%);
+}
+
+.sm-toggle {
+  border-color: var(--lg-border);
+  background: var(--lg-surface-soft);
+  box-shadow: var(--lg-shadow);
+}
+
+.sm-toggle:hover {
+  border-color: var(--lg-border-strong);
+  box-shadow: var(--lg-shadow-hover);
+}
+
+.staggered-menu-wrapper[data-open="true"] .sm-toggle,
+.staggered-menu-wrapper[data-open="true"] .sm-toggle:hover {
+  background: var(--lg-surface-soft);
+  border-color: var(--lg-border-strong);
+  box-shadow: var(--lg-shadow-hover);
+}
+
+.sm-panel-item {
+  color: var(--lg-text);
+}
+
+.sm-panel-item:hover {
+  color: #e5edff;
+}
+
+.sm-socials-link {
+  padding: 0.3rem 0.66rem;
+  border-radius: 999px;
+  border: 1px solid var(--lg-border-soft);
+  background: var(--lg-surface-soft);
+  color: var(--lg-text-soft);
+  box-shadow: var(--lg-shadow);
+}
+
+.sm-socials-list:hover .sm-socials-link {
+  opacity: 0.5;
+}
+
+.sm-socials-list:hover .sm-socials-link:hover {
+  opacity: 1;
+  color: #f4f7ff;
+  border-color: var(--lg-border-strong);
+}
+
+.intro__tag,
+.intro__meta li,
+.sobre__info-tag {
+  border-color: var(--lg-border-soft);
+  background: var(--lg-surface-soft);
+  color: var(--lg-text-soft);
+  box-shadow: var(--lg-shadow);
+}
+
+.intro__botao {
+  color: var(--lg-text);
+  border: 1px solid var(--lg-border);
+  background: var(--lg-surface);
+  box-shadow: var(--lg-shadow);
+}
+
+.intro__botao:hover {
+  border-color: var(--lg-border-strong);
+  box-shadow: var(--lg-shadow-hover);
+}
+
+.intro__botao--primario,
+.intro__botao--ghost {
+  color: var(--lg-text);
+  background:
+    radial-gradient(112% 124% at 100% 0%, rgba(108, 130, 255, 0.26) 0%, rgba(108, 130, 255, 0) 56%),
+    var(--lg-surface);
+}
+
+.cvf-button {
+  border-color: var(--lg-border);
+  background:
+    radial-gradient(122% 112% at 100% 0%, rgba(105, 136, 255, 0.24) 0%, transparent 58%),
+    var(--lg-surface);
+  box-shadow: var(--lg-shadow);
+}
+
+.cvf-button:hover {
+  border-color: var(--lg-border-strong);
+  box-shadow: var(--lg-shadow-hover);
+}
+
+.cvf-button__label {
+  color: #f4f7ff;
+}
+
+.cvf-button__meta {
+  color: var(--lg-text-soft);
+}
+
+.cvf-button__icon {
+  border-color: var(--lg-border-soft);
+  background: var(--lg-surface-soft);
+  color: #eaf0ff;
+}
+
+/* GitHub cards and controls */
+.ghc-shell {
+  border-color: var(--lg-border-soft);
+  background:
+    radial-gradient(130% 110% at 100% 0%, rgba(108, 130, 255, 0.22) 0%, rgba(108, 130, 255, 0) 58%),
+    var(--lg-surface);
+  box-shadow: var(--lg-shadow);
+}
+
+.ghc-shell[data-ativo] {
+  border-color: var(--lg-border-strong);
+  box-shadow:
+    0 24px 50px -20px rgba(0, 0, 0, 0.88),
+    0 0 0 1px rgba(197, 214, 255, 0.2) inset,
+    0 0 28px -18px rgba(111, 153, 255, 0.62);
+}
+
+.ghc-btn,
+.ghc-nav-btn,
+.ghc-row__count,
+.ghc-tag,
+.ghc-tag--mais {
+  border: 1px solid var(--lg-border-soft);
+  background: var(--lg-surface-soft);
+  color: var(--lg-text-soft);
+  box-shadow: var(--lg-shadow);
+}
+
+.ghc-btn:hover,
+.ghc-nav-btn:hover:not(:disabled),
+.ghc-btn:focus-visible,
+.ghc-nav-btn:focus-visible {
+  border-color: var(--lg-border-strong);
+  color: var(--lg-text);
+  box-shadow: var(--lg-shadow-hover);
+}
+
+.ghc-btn--demo {
+  background:
+    radial-gradient(105% 130% at 100% 0%, rgba(108, 130, 255, 0.24) 0%, rgba(108, 130, 255, 0) 58%),
+    var(--lg-surface-soft);
+}
+
+.ghc-btn--gh {
+  background: var(--lg-surface-soft);
+}
+
+.ghc-tag {
+  color: #d8e1ff;
+}
+
+.ghc-tag--mais {
+  color: #ccd6f8;
+}
+
+.ghs-item {
+  border-color: var(--lg-border-soft);
+  background:
+    radial-gradient(120% 92% at 100% 0%, var(--ghs-highlight, rgba(111, 153, 255, 0.24)) 0%, transparent 58%),
+    var(--lg-surface);
+  box-shadow: var(--lg-shadow);
+}
+
+.ghs-item:is(:hover, :focus-visible, .is-open) {
+  border-color: var(--lg-border-strong);
+  box-shadow: var(--lg-shadow-hover);
+}
+
+.ghs-state,
+.ghs-orb-value {
+  border-color: var(--lg-border-soft);
+  background: var(--lg-surface-soft);
+  color: var(--lg-text-soft);
+  box-shadow: var(--lg-shadow);
+}
+
+.icon-btn__front {
+  border: 1px solid var(--lg-border-soft);
+  background:
+    linear-gradient(145deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.06)),
+    var(--lg-surface-soft);
+  box-shadow: var(--lg-shadow);
+}
+
+.icon-btn:is(:hover, :focus-visible) .icon-btn__front {
+  border-color: var(--lg-border-strong);
+  box-shadow: var(--lg-shadow-hover);
+}
+
+.icon-btn__label {
+  color: var(--lg-text-soft);
+}
+
+.site-footer__inner {
+  border-color: var(--lg-border-soft);
+  background:
+    radial-gradient(110% 120% at 100% 0%, rgba(108, 130, 255, 0.22) 0%, rgba(108, 130, 255, 0) 56%),
+    var(--lg-surface);
+  box-shadow: var(--lg-shadow);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .intro__botao,
+  .sm-toggle,
+  .cvf-button,
+  .ghc-shell,
+  .ghc-btn,
+  .ghc-nav-btn,
+  .ghs-item,
+  .icon-btn__front {
+    transition: none !important;
+  }
+}

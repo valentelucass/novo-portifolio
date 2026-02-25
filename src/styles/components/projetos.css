@@ -1,0 +1,151 @@
+/*
+ * AUTOINTRO: src/styles/components/projetos.css
+ * Objetivo: Estilos da secao Projetos e blocos relacionados de apresentacao do portfolio.
+ * Escopo: Regras de estilo deste arquivo e seu papel no tema visual geral.
+ */
+﻿/* ============================================
+   SECAO PROJETOS - Logo Loop + Estrutura
+   ============================================ */
+
+/* ---------- Layout da secao ---------- */
+.projetos__titulo {
+    max-width: 14ch;
+}
+
+/* ---------- Subtitulo do carrossel de logos ---------- */
+.projetos__stack-label {
+    font-size: 0.72rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: #7c6ac4;
+    margin-bottom: 1.4rem;
+}
+
+/* ---------- LOGO LOOP (faixa de tecnologias) ---------- */
+.ll-wrapper {
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    padding-block: 14px;
+    margin-block: -14px;
+    mask-image: linear-gradient(to right,
+            transparent 0%,
+            #000 8%,
+            #000 92%,
+            transparent 100%);
+    -webkit-mask-image: linear-gradient(to right,
+            transparent 0%,
+            #000 8%,
+            #000 92%,
+            transparent 100%);
+}
+
+.ll-track {
+    display: flex;
+    width: max-content;
+    animation: ll-scroll 32s linear infinite;
+    will-change: transform;
+    user-select: none;
+}
+
+@keyframes ll-scroll {
+    from {
+        transform: translateX(0);
+    }
+
+    to {
+        transform: translateX(-50%);
+    }
+}
+
+.ll-lista {
+    display: flex;
+    align-items: center;
+    list-style: none;
+    gap: 0;
+}
+
+.ll-item {
+    flex: 0 0 auto;
+    padding: 0 2rem;
+}
+
+.ll-link {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.55rem;
+    text-decoration: none;
+    opacity: 0.55;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.ll-link:hover {
+    opacity: 1;
+    transform: translateY(-4px);
+}
+
+.ll-link:focus-visible {
+    outline: 2px solid #5227ff;
+    outline-offset: 4px;
+    border-radius: 4px;
+}
+
+.ll-icon {
+    width: auto;
+    height: 36px;
+    display: block;
+    object-fit: contain;
+    pointer-events: none;
+    -webkit-user-drag: none;
+    transition: filter 0.35s ease, transform 0.3s ease;
+    filter: grayscale(100%) brightness(0.75);
+}
+
+.ll-icon--inverter {
+    filter: invert(1) grayscale(100%) brightness(0.85);
+}
+
+.ll-link:hover .ll-icon,
+.ll-link:hover .ll-icon--inverter {
+    filter: grayscale(100%) brightness(1.3);
+}
+
+.ll-nome {
+    font-size: 0.72rem;
+    letter-spacing: 0.06em;
+    color: var(--muted);
+    text-transform: uppercase;
+    white-space: nowrap;
+    transition: color 0.3s ease;
+}
+
+.ll-link:hover .ll-nome {
+    color: #c4b8f0;
+}
+
+/* ---------- Espaco entre Logo Loop e Cards ---------- */
+#gh-cards-container {
+    margin-top: clamp(3rem, 6vw, 5rem);
+}
+
+/* ---------- Responsividade ---------- */
+@media (min-width: 601px) {
+    .ll-item {
+        padding: 0 2.8rem;
+    }
+
+    .ll-icon {
+        height: 44px;
+    }
+
+    .projetos__titulo {
+        max-width: 20ch;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .ll-track {
+        animation-play-state: paused;
+    }
+}

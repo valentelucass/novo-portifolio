@@ -1,0 +1,206 @@
+/*
+ * AUTOINTRO: src/styles/components/contato-flowing-menu.css
+ * Objetivo: Estilos do bloco de contato com icones glass e comportamento responsivo.
+ * Escopo: Regras de estilo deste arquivo e seu papel no tema visual geral.
+ */
+.contato__header {
+  margin-bottom: 0.95rem;
+}
+
+.contato__lead {
+  max-width: 48ch;
+  color: var(--muted);
+  font-size: clamp(0.94rem, 1.4vw, 1.02rem);
+  line-height: 1.65;
+  margin-bottom: clamp(1.2rem, 2.4vw, 1.8rem);
+}
+
+.contato__menu {
+  min-height: 0;
+}
+
+.ct-wrap {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.icon-btns {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(4.8em, 1fr));
+  gap: clamp(1.4rem, 7vw, 3.4rem);
+  justify-items: center;
+  margin: 0 auto;
+  padding: clamp(1rem, 2.4vw, 1.6rem) 0 clamp(0.8rem, 2vw, 1.2rem);
+  width: min(560px, 100%);
+}
+
+.icon-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.icon-btn {
+  background-color: transparent;
+  text-decoration: none;
+  color: #edf0ff;
+  outline: none;
+  position: relative;
+  width: 4.8em;
+  height: 4.8em;
+  perspective: 24em;
+  transform-style: preserve-3d;
+  -webkit-tap-highlight-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.icon-btn__back,
+.icon-btn__front,
+.icon-btn__label {
+  transition:
+    opacity 0.3s cubic-bezier(0.83, 0, 0.17, 1),
+    transform 0.3s cubic-bezier(0.83, 0, 0.17, 1),
+    box-shadow 0.28s ease,
+    border-color 0.28s ease;
+}
+
+.icon-btn__back,
+.icon-btn__front {
+  border-radius: 1.25em;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.icon-btn__back {
+  box-shadow:
+    0.5em -0.5em 0.75em hsla(223, 10%, 10%, 0.18),
+    0 0 0 1px rgba(255, 255, 255, 0.15) inset;
+  display: block;
+  transform: rotate(15deg);
+  transform-origin: 100% 100%;
+  will-change: transform;
+}
+
+.icon-btn__front {
+  background:
+    linear-gradient(145deg, rgba(255, 255, 255, 0.26) 0%, rgba(255, 255, 255, 0.08) 100%),
+    rgba(255, 255, 255, 0.08);
+  box-shadow:
+    0 0 0 0.1em hsla(0, 0%, 100%, 0.28) inset,
+    0 14px 30px -24px rgba(0, 0, 0, 0.92);
+  backdrop-filter: blur(0.75em);
+  -webkit-backdrop-filter: blur(0.75em);
+  display: flex;
+  transform-origin: 80% 50%;
+  will-change: transform;
+}
+
+.icon-btn__icon {
+  margin: auto;
+  width: 1.6em;
+  height: 1.6em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+}
+
+.icon-btn__icon svg {
+  width: 100%;
+  height: 100%;
+  stroke: currentColor;
+  stroke-width: 1.85;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.icon-btn__label {
+  font-size: 0.85rem;
+  white-space: nowrap;
+  text-align: center;
+  line-height: 1.9;
+  letter-spacing: 0.02em;
+  color: #e6e8f2;
+  opacity: 0;
+  position: absolute;
+  top: 100%;
+  right: 0;
+  left: 0;
+  transform: translateY(0);
+}
+
+.icon-btn:is(:focus-visible, :hover) .icon-btn__back {
+  transform: rotate(25deg) translate3d(-0.5em, -0.5em, 0.5em);
+  box-shadow:
+    0.7em -0.7em 0.92em hsla(223, 10%, 8%, 0.2),
+    0 0 0 1px rgba(255, 255, 255, 0.24) inset;
+}
+
+.icon-btn:is(:focus-visible, :hover) .icon-btn__front {
+  transform: translate3d(0, 0, 2em);
+  box-shadow:
+    0 0 0 0.1em hsla(0, 0%, 100%, 0.38) inset,
+    0 22px 36px -24px rgba(0, 0, 0, 0.98);
+}
+
+.icon-btn:is(:focus-visible, :hover) .icon-btn__label {
+  opacity: 1;
+  transform: translateY(18%);
+}
+
+.icon-btn:focus-visible {
+  outline: 2px solid #b19eef;
+  outline-offset: 6px;
+  border-radius: 1.4em;
+}
+
+@media (hover: none) {
+  .icon-item {
+    padding-bottom: 1.7rem;
+  }
+
+  .icon-btns {
+    row-gap: 1rem;
+  }
+
+  .icon-btn__back {
+    transform: rotate(10deg);
+  }
+
+  .icon-btn__label {
+    opacity: 0.96;
+    top: calc(100% + 0.35rem);
+    line-height: 1.2;
+    transform: none;
+  }
+
+  .icon-btn:is(:focus-visible, :hover) .icon-btn__label {
+    transform: none;
+  }
+}
+
+@media (max-width: 767px) {
+  .icon-btns {
+    gap: 1.2rem 0.9rem;
+    padding: 0.8rem 0 0.95rem;
+  }
+
+  .icon-btn {
+    width: 4.55em;
+    height: 4.55em;
+  }
+}
+
+@media (min-width: 768px) {
+  .icon-btns {
+    grid-template-columns: repeat(4, minmax(4.8em, 1fr));
+    gap: clamp(2rem, 5vw, 4.4rem);
+    width: min(760px, 100%);
+  }
+}

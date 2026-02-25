@@ -1,0 +1,19 @@
+/*
+ * AUTOINTRO: src/styles/base/reset.css
+ * Objetivo: Reset de estilos nativos do navegador para garantir consistencia visual entre ambientes.
+ * Escopo: Regras de estilo deste arquivo e seu papel no tema visual geral.
+ */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body {
+  min-height: 100%;
+}
+
+html {
+  scroll-behavior: smooth;
+}

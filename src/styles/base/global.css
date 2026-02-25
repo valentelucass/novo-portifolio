@@ -1,0 +1,25 @@
+/*
+ * AUTOINTRO: src/styles/base/global.css
+ * Objetivo: Regras globais de pagina, tipografia base e comportamentos comuns compartilhados entre secoes.
+ * Escopo: Regras de estilo deste arquivo e seu papel no tema visual geral.
+ */
+body {
+  font-family: "Space Grotesk", sans-serif;
+  background:
+    radial-gradient(62% 58% at 20% 0%, rgba(82, 39, 255, 0.22), transparent 72%),
+    radial-gradient(48% 42% at 80% -6%, rgba(255, 159, 252, 0.16), transparent 70%),
+    linear-gradient(180deg, #020207 0%, #010103 58%, #000000 100%);
+  color: var(--text);
+  overflow-x: hidden;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background-image: radial-gradient(rgba(255, 255, 255, 0.06) 0.45px, transparent 0.45px);
+  background-size: 3px 3px;
+  opacity: 0.08;
+  z-index: -1;
+}

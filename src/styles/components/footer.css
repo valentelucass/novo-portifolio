@@ -1,0 +1,109 @@
+/*
+ * AUTOINTRO: src/styles/components/footer.css
+ * Objetivo: Estilos da area de encerramento (footer), incluindo composicao visual e tipografia local.
+ * Escopo: Regras de estilo deste arquivo e seu papel no tema visual geral.
+ */
+.site-footer {
+  position: relative;
+  isolation: isolate;
+  overflow: clip;
+  border-top: 1px solid var(--line);
+  padding: clamp(2.4rem, 6vh, 3.6rem) 1.2rem clamp(2.8rem, 6vh, 4rem);
+}
+
+.site-footer::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background:
+    radial-gradient(62% 58% at 20% 30%, rgba(82, 39, 255, 0.2), transparent 70%),
+    radial-gradient(48% 42% at 80% 12%, rgba(255, 159, 252, 0.16), transparent 68%),
+    linear-gradient(180deg, rgba(3, 3, 8, 0.66) 0%, rgba(2, 2, 5, 0.9) 100%);
+}
+
+.site-footer__fx {
+  position: absolute;
+  inset: -10vh -18vw;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.site-footer__veil {
+  position: absolute;
+  inset: 0;
+  border-radius: 26px;
+  overflow: hidden;
+  opacity: 0.98;
+}
+
+.site-footer__vignette {
+  position: absolute;
+  inset: 0;
+  border-radius: 26px;
+  background:
+    radial-gradient(64% 52% at 50% 48%, transparent 0%, transparent 45%, rgba(0, 0, 0, 0.32) 100%),
+    linear-gradient(180deg, rgba(2, 2, 4, 0.16), rgba(2, 2, 4, 0.54));
+}
+
+.site-footer__inner {
+  position: relative;
+  z-index: 2;
+  width: min(1100px, 94vw);
+  margin: 0 auto;
+  border: 1px solid rgba(205, 218, 255, 0.3);
+  border-radius: 18px;
+  padding: clamp(1.05rem, 2.3vw, 1.65rem);
+  background:
+    linear-gradient(155deg, rgba(255, 255, 255, 0.16) 0%, rgba(255, 255, 255, 0.04) 38%, rgba(255, 255, 255, 0) 68%),
+    linear-gradient(172deg, rgba(8, 10, 18, 0.66) 0%, rgba(5, 6, 12, 0.74) 100%);
+  backdrop-filter: blur(10px) saturate(125%);
+  -webkit-backdrop-filter: blur(10px) saturate(125%);
+  box-shadow:
+    0 20px 42px -30px rgba(0, 0, 0, 0.9),
+    0 0 0 1px rgba(200, 215, 255, 0.1) inset;
+}
+
+.site-footer__inner::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  background: linear-gradient(120deg, rgba(255, 255, 255, 0.16), rgba(255, 255, 255, 0) 42%);
+  opacity: 0.58;
+}
+
+.site-footer__title {
+  position: relative;
+  z-index: 1;
+  font-size: clamp(1rem, 2.1vw, 1.34rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: #f7f9ff;
+  margin-bottom: 0.42rem;
+}
+
+.site-footer__text {
+  position: relative;
+  z-index: 1;
+  color: #d2daf1;
+  font-size: clamp(0.9rem, 1.25vw, 0.98rem);
+  line-height: 1.6;
+  margin-bottom: 0.72rem;
+}
+
+.site-footer__copy {
+  position: relative;
+  z-index: 1;
+  color: #aeb7d7;
+  font-size: 0.78rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+@media (min-width: 721px) {
+  .site-footer__fx {
+    inset: -14vh -12vw;
+  }
+}

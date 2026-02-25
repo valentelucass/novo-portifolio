@@ -1,0 +1,14 @@
+/*
+ * AUTOINTRO: src/styles/base/tokens.css
+ * Objetivo: Define tokens visuais globais (cores, espacamentos, tipografia e variaveis reutilizaveis).
+ * Escopo: Regras de estilo deste arquivo e seu papel no tema visual geral.
+ */
+:root {
+  --bg: #050505;
+  --bg-soft: #0a0a0a;
+  --text: #f5f5f5;
+  --muted: #b5b5b5;
+  --line: rgba(255, 255, 255, 0.12);
+  --card: rgba(255, 255, 255, 0.03);
+  --sm-accent: #5227ff;
+}

@@ -1,0 +1,36 @@
+/*
+ * AUTOINTRO: src/styles/layout/sections.css
+ * Objetivo: Define espacamento, containers e padroes de layout compartilhados entre secoes principais.
+ * Escopo: Regras de estilo deste arquivo e seu papel no tema visual geral.
+ */
+.sobre,
+.projetos,
+.contato {
+  width: min(1100px, 94vw);
+  margin: 0 auto;
+  padding: clamp(5rem, 10vh, 8rem) 1.2rem clamp(4rem, 8vh, 7rem);
+  border-top: 1px solid var(--line);
+}
+
+.sobre__header,
+.projetos__header {
+  margin-bottom: clamp(2.5rem, 5vw, 4rem);
+}
+
+.sobre__label,
+.projetos__label {
+  display: inline-block;
+  font-size: 0.78rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #9b8de0;
+  margin-bottom: 0.7rem;
+}
+
+.sobre__titulo,
+.projetos__titulo {
+  font-size: clamp(2rem, 5.5vw, 4rem);
+  letter-spacing: -0.04em;
+  line-height: 0.97;
+  font-weight: 700;
+}

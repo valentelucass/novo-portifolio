@@ -1,0 +1,247 @@
+/*
+ * AUTOINTRO: src/styles/layout/intro.css
+ * Objetivo: Estilos estruturais e responsivos da secao de introducao (hero).
+ * Escopo: Regras de estilo deste arquivo e seu papel no tema visual geral.
+ */
+.intro {
+  position: relative;
+  isolation: isolate;
+  width: 100%;
+  min-height: 96vh;
+  margin: 0 auto;
+  padding: clamp(5.6rem, 10vh, 7rem) 1rem 3rem;
+  overflow: clip;
+  display: flex;
+  align-items: center;
+}
+
+.intro::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background:
+    radial-gradient(62% 58% at 20% 30%, rgba(82, 39, 255, 0.34), transparent 70%),
+    radial-gradient(48% 42% at 80% 12%, rgba(255, 159, 252, 0.26), transparent 68%),
+    linear-gradient(180deg, rgba(3, 3, 8, 0.72) 0%, rgba(4, 4, 6, 0.9) 100%);
+}
+
+.intro__fx {
+  position: absolute;
+  inset: -8vh -24vw;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.intro__veil {
+  position: absolute;
+  inset: 0;
+  border-radius: 22px;
+  overflow: hidden;
+  opacity: 1;
+  filter: none;
+}
+
+.darkveil-canvas {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.intro__veil--fallback {
+  background:
+    radial-gradient(56% 60% at 16% 30%, rgba(82, 39, 255, 0.28) 0%, transparent 74%),
+    radial-gradient(44% 52% at 84% 22%, rgba(177, 158, 239, 0.16) 0%, transparent 76%),
+    linear-gradient(180deg, rgba(5, 6, 15, 0.92), rgba(4, 4, 8, 0.98));
+}
+
+.intro__vignette {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(64% 52% at 50% 48%, transparent 0%, transparent 45%, rgba(0, 0, 0, 0.36) 100%),
+    linear-gradient(180deg, rgba(2, 2, 4, 0.22), rgba(2, 2, 4, 0.62));
+}
+
+.intro__content {
+  position: relative;
+  z-index: 2;
+  width: 94vw;
+  margin: 0 auto;
+  display: grid;
+  gap: clamp(0.85rem, 2vh, 1.3rem);
+}
+
+.intro__tag {
+  width: fit-content;
+  padding: 0.44rem 0.75rem;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: rgba(5, 5, 12, 0.5);
+  font-size: 0.78rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: #d9cdfc;
+}
+
+.intro__titulo {
+  display: grid;
+  gap: 0.2rem;
+  font-size: clamp(2.25rem, 8vw, 6.2rem);
+  line-height: 0.9;
+  letter-spacing: -0.05em;
+  max-width: 10ch;
+}
+
+.intro__titulo-gradiente {
+  width: fit-content;
+  background-image: linear-gradient(
+    90deg,
+    #5227ff 0%,
+    #ff9ffc 42%,
+    #b19eef 70%,
+    #5227ff 100%
+  );
+  background-size: 300% 100%;
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  animation: intro-gradient-flow 8s ease-in-out infinite alternate;
+}
+
+.intro__titulo-linha {
+  color: #f4f4f4;
+}
+
+.intro__texto {
+  max-width: 44ch;
+  color: #cbcbd2;
+  font-size: clamp(1rem, 1.7vw, 1.16rem);
+  line-height: 1.65;
+}
+
+.intro__acoes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.intro__botao {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  padding: 0.72rem 1.15rem;
+  border-radius: 12px;
+  border: 1px solid transparent;
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 0.09em;
+  font-size: 0.78rem;
+  font-weight: 700;
+  transition: transform 0.24s ease, box-shadow 0.24s ease, border-color 0.24s ease, background 0.24s ease;
+}
+
+.intro__botao:hover {
+  transform: translateY(-2px);
+}
+
+.intro__botao--primario {
+  color: #0d071d;
+  background: linear-gradient(120deg, #b19eef 0%, #ff9ffc 100%);
+  box-shadow: 0 16px 36px -24px rgba(177, 158, 239, 0.95);
+}
+
+.intro__botao--primario:hover {
+  box-shadow: 0 20px 42px -22px rgba(177, 158, 239, 1);
+}
+
+.intro__botao--ghost {
+  color: #f3f3f3;
+  border-color: rgba(255, 255, 255, 0.26);
+  background: rgba(8, 8, 14, 0.45);
+}
+
+.intro__botao--ghost:hover {
+  border-color: rgba(255, 255, 255, 0.46);
+  background: rgba(14, 14, 20, 0.7);
+}
+
+.intro__botao:focus-visible {
+  outline: 2px solid #b19eef;
+  outline-offset: 3px;
+}
+
+.intro__meta {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+  margin-top: 0.2rem;
+}
+
+.intro__meta li {
+  padding: 0.34rem 0.7rem;
+  border-radius: 999px;
+  border: 1px solid rgba(177, 158, 239, 0.3);
+  background: rgba(10, 10, 18, 0.55);
+  color: #d8cfef;
+  font-size: 0.76rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.intro__status {
+  margin-top: 0.6rem;
+  color: #e2e2e2;
+  font-size: 0.9rem;
+}
+
+@keyframes intro-gradient-flow {
+  0% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: 100% 50%;
+  }
+}
+
+@media (min-width: 721px) {
+  .intro {
+    padding: clamp(6.2rem, 12vh, 8.4rem) 1.2rem clamp(2.8rem, 8vh, 4rem);
+  }
+
+  .intro__fx {
+    inset: -10vh -14vw;
+  }
+
+  .intro__content {
+    width: min(760px, 94vw);
+  }
+
+  .intro__texto {
+    max-width: 56ch;
+  }
+}
+
+@media (min-width: 921px) {
+  .intro {
+    min-height: 100vh;
+    padding: clamp(6.4rem, 12vh, 9rem) 1.2rem clamp(2.8rem, 8vh, 4rem);
+  }
+
+  .intro__content {
+    width: min(1080px, 94vw);
+  }
+
+  .intro__titulo {
+    max-width: 12ch;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .intro__titulo-gradiente {
+    animation: none;
+    background-position: 40% 50%;
+  }
+}

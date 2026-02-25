@@ -1,0 +1,200 @@
+﻿<!doctype html>
+<!-- AUTOINTRO: index.html | Objetivo: Define a estrutura principal da pagina (secoes, containers e pontos de montagem dos componentes JS/CSS). | Escopo: Estrutura e pontos de integracao da pagina. -->
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description"
+    content="Portfólio de Lucas Andrade — desenvolvedor de software focado em back-end, automação e integração de dados. São Paulo, SP." />
+  <title>Portfólio — Lucas Andrade</title>
+  <link rel="icon" type="image/svg+xml" href="./public/favicon.svg" />
+  <link rel="shortcut icon" href="./public/favicon.svg" />
+  <link rel="stylesheet" href="./src/styles/main.css" />
+</head>
+
+<body>
+  <!-- Menu escalonado (injetado via JS) -->
+  <div id="menu-escalonado"></div>
+
+  <!-- ==================== HERO ==================== -->
+  <main id="inicio" class="intro" aria-labelledby="intro-titulo">
+    <div class="intro__fx" aria-hidden="true">
+      <div id="intro-dark-veil" class="intro__veil"></div>
+      <div class="intro__vignette"></div>
+    </div>
+
+    <div class="intro__content">
+      <p class="intro__tag">Portfólio de Software</p>
+      <h1 class="intro__titulo" id="intro-titulo">
+        <span class="intro__titulo-gradiente">Meu portfólio.</span>
+        <span class="intro__titulo-linha">Projetos com resultado.</span>
+      </h1>
+      <p class="intro__texto">
+        Este e o meu espaco para mostrar projetos de back-end, automacao e integracao de dados.
+        ETL com Java, APIs e solucoes com foco em performance e entrega real.
+      </p>
+
+      <div class="intro__acoes" aria-label="Atalhos iniciais">
+        <a class="intro__botao intro__botao--primario" href="#projetos">Ver projetos</a>
+        <a class="intro__botao intro__botao--ghost" href="#contato">Falar comigo</a>
+      </div>
+
+      <ul class="intro__meta" aria-label="Especialidades principais">
+        <li>Java + ETL</li>
+        <li>Integracao de APIs</li>
+        <li>Automacao de Processos</li>
+      </ul>
+
+      <p id="status-app" class="intro__status" role="status" aria-live="polite"></p>
+    </div>
+  </main>
+
+  <!-- ==================== SOBRE ==================== -->
+  <section id="sobre" class="sobre" aria-labelledby="sobre-titulo">
+
+    <!-- Cabeçalho da seção -->
+    <header class="sobre__header" data-animate-header>
+      <span class="sobre__label">Sobre mim</span>
+      <h2 class="sobre__titulo" id="sobre-titulo">Quem está por trás do código.</h2>
+    </header>
+
+    <!-- Galeria Masonry -->
+    <div class="msb-wrapper" id="masonry-sobre" aria-label="Galeria de fotos"></div>
+
+    <!-- Bloco de texto biográfico -->
+    <div class="sobre__texto-bloco" id="sobre-texto">
+
+      <!-- Coluna principal: bio -->
+      <div class="sobre__bio">
+        <p>
+          Oi, sou <strong>Lucas Andrade</strong> — desenvolvedor de software com foco em
+          <strong>back-end, automação de processos e integração de dados</strong>.
+          Baseado em São Paulo, 26 anos, cursando Análise e Desenvolvimento de Sistemas no Senac.
+        </p>
+        <p>
+          Trabalho com Java e SQL no dia a dia. Na Rodogarcia, desenvolvi
+          automações que eliminaram mais de <strong>30 horas semanais</strong> de trabalho manual
+          e um projeto ETL em Java integrando 3 APIs ao Power BI com dados em tempo real.
+        </p>
+        <p>
+          Também tenho base sólida em front-end (HTML, CSS, JavaScript) e experiência com
+          ferramentas como AWS, Azure, Git e Figma. Antes do desenvolvimento, gerenciei
+          um e-commerce por 5 anos — o que me deu visão de negócio além do código.
+        </p>
+        <hr class="sobre__divider" />
+        <p>
+          Atualmente estagiando como desenvolvedor Full Stack na Rodogarcia.
+        </p>
+      </div>
+
+      <!-- Coluna lateral: habilidades e info -->
+      <div class="sobre__info">
+
+        <div class="sobre__info-bloco">
+          <span class="sobre__info-titulo">Back-end</span>
+          <ul class="sobre__info-lista" aria-label="Tecnologias back-end">
+            <li class="sobre__info-tag">Java</li>
+            <li class="sobre__info-tag">ETL com Java</li>
+            <li class="sobre__info-tag">APIs REST</li>
+            <li class="sobre__info-tag">GraphQL</li>
+            <li class="sobre__info-tag">SQL</li>
+            <li class="sobre__info-tag">MongoDB</li>
+          </ul>
+        </div>
+
+        <div class="sobre__info-bloco">
+          <span class="sobre__info-titulo">Front-end & Ferramentas</span>
+          <ul class="sobre__info-lista" aria-label="Front-end e ferramentas">
+            <li class="sobre__info-tag">HTML & CSS</li>
+            <li class="sobre__info-tag">JavaScript</li>
+            <li class="sobre__info-tag">React</li>
+            <li class="sobre__info-tag">Git & GitHub</li>
+            <li class="sobre__info-tag">AWS</li>
+            <li class="sobre__info-tag">Azure</li>
+            <li class="sobre__info-tag">Figma</li>
+          </ul>
+        </div>
+
+        <div class="sobre__info-bloco">
+          <span class="sobre__info-titulo">Localização</span>
+          <ul class="sobre__info-lista" aria-label="Localização">
+            <li class="sobre__info-tag">São Paulo, SP</li>
+            <li class="sobre__info-tag">Presencial ou Remoto</li>
+          </ul>
+        </div>
+
+        <div class="sobre__info-bloco sobre__info-bloco--cv">
+          <span class="sobre__info-titulo">Curriculo</span>
+          <div id="curriculo-download" aria-label="Botao para baixar curriculo"></div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== PROJETOS ==================== -->
+  <section id="projetos" class="projetos" aria-labelledby="projetos-titulo">
+
+    <header class="projetos__header" data-animate-projetos-header>
+      <span class="projetos__label">Portfólio</span>
+      <h2 class="projetos__titulo" id="projetos-titulo">Projetos pessoais e profissionais.</h2>
+    </header>
+
+    <!-- Carrossel de logos de tecnologias -->
+    <p class="projetos__stack-label">Stack &amp; Tecnologias</p>
+    <div class="ll-wrapper">
+      <div id="logo-loop" aria-label="Tecnologias utilizadas"></div>
+    </div>
+
+    <!-- Cards de projetos (populados via GitHub API) -->
+    <div id="gh-cards-container" aria-label="Projetos do GitHub" aria-live="polite"></div>
+
+  </section>
+
+  <!-- ==================== SKILLS ==================== -->
+  <section id="skills" class="projetos ghs-section" aria-labelledby="skills-titulo">
+
+    <header class="projetos__header ghs-header" data-animate-projetos-header>
+      <span class="projetos__label">Skills</span>
+      <h2 class="projetos__titulo" id="skills-titulo">Stack por volume de codigo no GitHub.</h2>
+    </header>
+
+    <div id="gh-skills-container" aria-label="Skills do GitHub" aria-live="polite"></div>
+
+  </section>
+
+  <!-- ==================== CONTATO ==================== -->
+  <section id="contato" class="contato" aria-labelledby="contato-titulo">
+    <header class="projetos__header contato__header" data-animate-projetos-header>
+      <span class="projetos__label">Contato</span>
+      <h2 class="projetos__titulo" id="contato-titulo">Contato direto.</h2>
+    </header>
+
+    <p class="contato__lead">
+      Escolha um canal e fale comigo.
+    </p>
+
+    <div id="contato-flowing-menu" class="contato__menu" aria-label="Canais de contato"></div>
+  </section>
+
+  <footer class="site-footer" aria-label="Rodape">
+    <div class="site-footer__fx" aria-hidden="true">
+      <div id="footer-dark-veil" class="site-footer__veil"></div>
+      <div class="site-footer__vignette"></div>
+    </div>
+
+    <div class="site-footer__inner">
+      <p class="site-footer__title">Encerrando por aqui.</p>
+      <p class="site-footer__text">
+        Obrigado por visitar. Se quiser construir algo junto, me chama no contato acima.
+      </p>
+      <p class="site-footer__copy">© <span id="footer-year">2026</span> Lucas Andrade.</p>
+    </div>
+  </footer>
+
+  <script type="module" src="./src/scripts/main.js"></script>
+</body>
+
+</html>
+

@@ -1,0 +1,392 @@
+/*
+ * AUTOINTRO: src/styles/components/skills-github.css
+ * Objetivo: Estilos da grade de skills do GitHub, incluindo spans, estados, animacoes e responsividade.
+ * Escopo: Regras de estilo deste arquivo e seu papel no tema visual geral.
+ */
+.ghs-section {
+  position: relative;
+}
+
+.ghs-header {
+  margin-bottom: clamp(2.2rem, 4vw, 3rem);
+}
+
+.ghs-wrapper {
+  position: relative;
+  padding: 0;
+  border: none;
+  background: transparent;
+}
+
+.ghs-list {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-auto-rows: 7px;
+  grid-auto-flow: dense;
+  gap: 0.58rem;
+  margin: 0;
+  padding: 0;
+}
+
+.ghs-item {
+  --ghs-highlight: color-mix(
+    in srgb,
+    var(--ghs-color, #7a7a7a) calc(var(--ghs-intensity, 0.32) * 100%),
+    transparent
+  );
+  --ghs-radius: 12px;
+  --ghs-padding: 0.56rem;
+
+  position: relative;
+  grid-column: span var(--ghs-col-span-mobile, 2);
+  grid-row: span var(--ghs-row-span-mobile, 7);
+  min-height: 36px;
+  border-radius: var(--ghs-radius);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  overflow: hidden;
+  cursor: pointer;
+  background:
+    radial-gradient(120% 90% at 100% 0%, var(--ghs-highlight), transparent 56%),
+    linear-gradient(180deg, rgba(11, 12, 18, 0.95) 0%, rgba(8, 9, 16, 0.98) 100%);
+  transform: translateY(0);
+  transition:
+    transform 0.24s ease,
+    border-color 0.24s ease,
+    box-shadow 0.24s ease;
+}
+
+.ghs-item::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(140deg, rgba(255, 255, 255, 0.11), transparent 58%),
+    radial-gradient(90% 90% at 50% 100%, rgba(0, 0, 0, 0.2), transparent 66%);
+  opacity: 0.42;
+  transition: opacity 0.24s ease;
+}
+
+.ghs-item::after {
+  content: "";
+  position: absolute;
+  inset: 1px;
+  border-radius: var(--ghs-radius);
+  border: 1px solid color-mix(in srgb, var(--ghs-color, #7a7a7a) 20%, transparent);
+  opacity: 0.26;
+  pointer-events: none;
+}
+
+.ghs-item:is(:hover, :focus-visible, .is-open) {
+  transform: translateY(-2px);
+  border-color: color-mix(in srgb, var(--ghs-color, #7a7a7a) 28%, rgba(255, 255, 255, 0.3));
+  box-shadow:
+    0 16px 28px -24px rgba(0, 0, 0, 0.88),
+    0 0 0 1px color-mix(in srgb, var(--ghs-color, #7a7a7a) 22%, transparent) inset;
+}
+
+.ghs-item:is(:hover, :focus-visible, .is-open)::before {
+  opacity: 0.72;
+}
+
+.ghs-item:focus-visible {
+  outline: 2px solid #b9caff;
+  outline-offset: 3px;
+}
+
+.ghs-item__core {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  display: flex;
+  align-items: flex-start;
+  padding: var(--ghs-padding);
+  overflow: hidden;
+}
+
+.ghs-name {
+  position: relative;
+  z-index: 5;
+  max-width: 100%;
+  color: #f7f9ff;
+  font-size: clamp(0.78rem, 1.12vw, 0.93rem);
+  font-weight: 680;
+  line-height: 1.08;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  overflow-wrap: anywhere;
+  word-break: break-word;
+  text-wrap: balance;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  transition: color 0.24s ease, transform 0.24s ease;
+}
+
+.ghs-item.is-featured .ghs-name {
+  font-size: clamp(0.82rem, 1.2vw, 0.98rem);
+}
+
+.ghs-orb {
+  position: absolute;
+  inset: 0;
+  border-radius: var(--ghs-radius);
+  border: 1px solid rgba(255, 255, 255, 0.24);
+  background:
+    radial-gradient(120% 90% at 18% 10%, rgba(255, 255, 255, 0.3) 0%, rgba(255, 255, 255, 0.03) 44%, rgba(255, 255, 255, 0) 74%),
+    linear-gradient(180deg, rgba(21, 24, 36, 0.58) 0%, rgba(10, 11, 18, 0.5) 100%);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.12),
+    inset 0 -20px 20px rgba(0, 0, 0, 0.34);
+  overflow: hidden;
+  opacity: 0;
+  transform: translateY(6px) scale(0.985);
+  transition:
+    opacity 0.28s ease,
+    transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1),
+    border-color 0.24s ease;
+}
+
+.ghs-orb-fill {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 0%;
+  background: linear-gradient(
+    180deg,
+    color-mix(in srgb, var(--ghs-color, #7a7a7a) 68%, #ffffff 12%) 0%,
+    var(--ghs-color, #7a7a7a) 100%
+  );
+  box-shadow:
+    0 0 18px -14px var(--ghs-color, #7a7a7a),
+    inset 0 10px 16px -12px rgba(255, 255, 255, 0.24);
+  transition: height 0.7s cubic-bezier(0.22, 0.8, 0.3, 1);
+}
+
+.ghs-orb-fill::before {
+  content: "";
+  position: absolute;
+  left: -8%;
+  right: -8%;
+  top: -10px;
+  height: 20px;
+  border-radius: 100%;
+  background: radial-gradient(
+    ellipse at center,
+    rgba(255, 255, 255, 0.46) 0%,
+    rgba(255, 255, 255, 0.04) 68%,
+    rgba(255, 255, 255, 0) 100%
+  );
+}
+
+.ghs-orb-wave {
+  position: absolute;
+  left: -14%;
+  right: -14%;
+  bottom: 30%;
+  height: 30px;
+  border-radius: 100%;
+  background: radial-gradient(
+    ellipse at center,
+    rgba(255, 255, 255, 0.2) 0%,
+    rgba(255, 255, 255, 0) 72%
+  );
+  opacity: 0;
+  pointer-events: none;
+}
+
+.ghs-orb-gloss {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+  background:
+    radial-gradient(circle at 24% 16%, rgba(255, 255, 255, 0.44), rgba(255, 255, 255, 0) 34%),
+    linear-gradient(160deg, rgba(255, 255, 255, 0.12), transparent 58%);
+}
+
+.ghs-orb-value {
+  position: absolute;
+  right: 0.56rem;
+  bottom: 0.46rem;
+  z-index: 4;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 1.38rem;
+  padding: 0.16rem 0.46rem;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.26);
+  background: rgba(8, 8, 14, 0.38);
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #f7f8ff;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.64);
+  opacity: 0;
+  transform: translateY(8px);
+  transition: opacity 0.24s ease, transform 0.24s ease;
+}
+
+.ghs-item:is(:hover, :focus-visible, .is-open) .ghs-orb {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  border-color: color-mix(in srgb, var(--ghs-color, #7a7a7a) 52%, rgba(255, 255, 255, 0.42));
+}
+
+.ghs-item:is(:hover, :focus-visible, .is-open) .ghs-orb-fill {
+  height: calc(var(--ghs-fill-target, 0) * 1%);
+}
+
+.ghs-item:is(:hover, :focus-visible, .is-open) .ghs-orb-wave {
+  bottom: calc(var(--ghs-fill-target, 0) * 1% - 15px);
+  opacity: 0.9;
+  animation: ghsOrbFlow 1.35s linear infinite;
+}
+
+.ghs-item:is(:hover, :focus-visible, .is-open) .ghs-name {
+  color: #fcfdff;
+  transform: translateY(-1px);
+}
+
+.ghs-item:is(:hover, :focus-visible, .is-open) .ghs-orb-value {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.ghs-wrapper .ghs-item {
+  opacity: 0;
+  transform: translateY(12px) scale(0.97);
+}
+
+.ghs-wrapper.is-ready .ghs-item {
+  animation: ghsItemIn 0.46s cubic-bezier(0.2, 0.9, 0.3, 1) forwards;
+  animation-delay: var(--ghs-delay, 0ms);
+}
+
+.ghs-state {
+  padding: 1rem;
+  border-radius: 10px;
+  text-align: center;
+  color: #d2d2d2;
+  font-size: 0.9rem;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.ghs-state--erro {
+  color: #ffb9b9;
+  background: rgba(180, 49, 49, 0.13);
+  border-color: rgba(180, 49, 49, 0.3);
+}
+
+.ghs-item--skeleton {
+  opacity: 1;
+  transform: none;
+  pointer-events: none;
+}
+
+.ghs-item--skeleton::before,
+.ghs-item--skeleton::after {
+  display: none;
+}
+
+.ghs-skel {
+  display: inline-block;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 6px;
+  animation: ghsPulse 1.2s ease-in-out infinite;
+}
+
+.ghs-skel--name {
+  width: 78%;
+  height: 1rem;
+}
+
+.ghs-skel--pct {
+  width: 42%;
+  height: 0.78rem;
+}
+
+@keyframes ghsPulse {
+  0%,
+  100% {
+    opacity: 0.92;
+  }
+  50% {
+    opacity: 0.34;
+  }
+}
+
+@keyframes ghsItemIn {
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes ghsOrbFlow {
+  from {
+    transform: translateX(0%);
+  }
+  to {
+    transform: translateX(40%);
+  }
+}
+
+@media (min-width: 560px) {
+  .ghs-list {
+    grid-template-columns: repeat(8, minmax(0, 1fr));
+    grid-auto-rows: 7px;
+    gap: 0.64rem;
+  }
+
+  .ghs-item {
+    grid-column: span var(--ghs-col-span-tablet, 2);
+    grid-row: span var(--ghs-row-span-tablet, 7);
+  }
+}
+
+@media (min-width: 980px) {
+  .ghs-list {
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    grid-auto-rows: 7px;
+    gap: 0.68rem;
+  }
+
+  .ghs-item {
+    grid-column: span var(--ghs-col-span, 2);
+    grid-row: span var(--ghs-row-span, 7);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ghs-wrapper.is-ready .ghs-item,
+  .ghs-skel,
+  .ghs-item,
+  .ghs-orb,
+  .ghs-orb-fill,
+  .ghs-orb-wave {
+    animation: none !important;
+    transition: none !important;
+  }
+
+  .ghs-wrapper .ghs-item,
+  .ghs-wrapper.is-ready .ghs-item {
+    opacity: 1;
+    transform: none;
+  }
+
+  .ghs-item .ghs-orb {
+    opacity: 1;
+    transform: none;
+  }
+
+  .ghs-item .ghs-orb-fill {
+    height: calc(var(--ghs-fill-target, 0) * 1%);
+  }
+}
