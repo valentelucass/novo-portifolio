@@ -67,6 +67,29 @@ function imagemMetaValida(imagem) {
     return /\.(png|jpe?g|webp|gif|svg|avif)$/i.test(valor);
 }
 
+function urlExternaValida(url) {
+    if (!url || typeof url !== "string") return null;
+
+    let valor = url.trim();
+    if (!valor) return null;
+
+    const temProtocolo = /^https?:\/\//i.test(valor);
+    if (!temProtocolo) {
+        // Evita transformar strings soltas (ex.: "github") em URL valida.
+        const pareceDominio = /^[a-z0-9.-]+\.[a-z]{2,}(\/|$)/i.test(valor);
+        if (!pareceDominio) return null;
+        valor = `https://${valor}`;
+    }
+
+    try {
+        const parsed = new URL(valor);
+        if (!/^https?:$/i.test(parsed.protocol)) return null;
+        return parsed.toString();
+    } catch {
+        return null;
+    }
+}
+
 /* ─────────────────────────────────────────────────────────────────
    Categorização por tecnologias
 
@@ -199,7 +222,7 @@ export async function buscarRepositoriosPortfolio() {
                     ? meta.imagem
                     : `https://raw.githubusercontent.com/${GITHUB_USUARIO}/${repo.name}/HEAD/${meta.imagem}`)
                 : `https://opengraph.githubassets.com/1/${GITHUB_USUARIO}/${repo.name}`;
-            const urlDemo = meta.demo ?? (repo.homepage?.trim() || null);
+            const urlDemo = urlExternaValida(meta.demo) ?? urlExternaValida(repo.homepage);
 
             return {
                 id: repo.id,

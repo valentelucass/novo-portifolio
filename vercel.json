@@ -9,6 +9,14 @@
   },
   "rewrites": [
     {
+      "source": "/api/github/",
+      "destination": "/api/github"
+    },
+    {
+      "source": "/api/github.js",
+      "destination": "/api/github"
+    },
+    {
       "source": "/favicon.ico",
       "destination": "/public/favicon.svg"
     },

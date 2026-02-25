@@ -178,7 +178,7 @@ function createServer() {
   return http.createServer(async (req, res) => {
     const requestUrl = new URL(req.url || "/", `http://${req.headers.host || `${HOST}:${PORT}`}`);
 
-    if (requestUrl.pathname === "/api/github") {
+    if (requestUrl.pathname === "/api/github" || requestUrl.pathname === "/api/github.js") {
       await handleGitHubProxy(req, res, requestUrl);
       return;
     }

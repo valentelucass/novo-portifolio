@@ -12,6 +12,11 @@ const GITHUB_PROXY_HEADER = "X-GitHub-Proxy";
 const PROXY_HELP_MESSAGE =
   "Proxy GitHub indisponivel. Rode `node server.js` e abra o site em http://127.0.0.1:3000 (ou mantenha CORS habilitado para chamar essa porta).";
 const REQUEST_TIMEOUT_MS = 12000;
+const PROXY_ENDPOINT_VARIANTS = Object.freeze([
+  GITHUB_PROXY_ENDPOINT,
+  `${GITHUB_PROXY_ENDPOINT}/`,
+  `${GITHUB_PROXY_ENDPOINT}.js`,
+]);
 
 const responseCache = new Map();
 const pendingRequests = new Map();
@@ -28,6 +33,12 @@ function isProxyResponse(resp) {
   return resp?.headers?.get(GITHUB_PROXY_HEADER) === "true";
 }
 
+function pushCandidates(target, originBase) {
+  PROXY_ENDPOINT_VARIANTS.forEach((endpoint) => {
+    target.push(`${originBase}${endpoint}`);
+  });
+}
+
 function getProxyCandidates() {
   const candidates = [];
 
@@ -37,18 +48,18 @@ function getProxyCandidates() {
 
     // Prioriza mesma origem para deploy normal (Vercel/producao).
     if (isHttpOrigin) {
-      candidates.push(`${origin}${GITHUB_PROXY_ENDPOINT}`);
+      pushCandidates(candidates, origin);
 
       // Fallback local sem misturar localhost <-> 127.0.0.1 para evitar CORS cruzado desnecessario.
       const isLocalHostname = hostname === "127.0.0.1" || hostname === "localhost";
       if (isLocalHostname && port !== "3000") {
-        candidates.push(`${protocol}//${hostname}:3000${GITHUB_PROXY_ENDPOINT}`);
+        pushCandidates(candidates, `${protocol}//${hostname}:3000`);
       }
     }
   }
 
   if (!candidates.length) {
-    candidates.push(`http://127.0.0.1:3000${GITHUB_PROXY_ENDPOINT}`);
+    pushCandidates(candidates, "http://127.0.0.1:3000");
   }
 
   return [...new Set(candidates)];
