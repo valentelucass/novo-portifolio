@@ -12,7 +12,10 @@ const GITHUB_PROXY_HEADER = "X-GitHub-Proxy";
 const PROXY_HELP_MESSAGE =
   "Proxy GitHub indisponivel. Rode `node server.js` e abra o site em http://127.0.0.1:3000 (ou mantenha CORS habilitado para chamar essa porta).";
 const REQUEST_TIMEOUT_MS = 12000;
-const PROXY_ENDPOINT_VARIANTS = Object.freeze([
+const PROXY_ENDPOINTS_PRODUCTION = Object.freeze([
+  GITHUB_PROXY_ENDPOINT,
+]);
+const PROXY_ENDPOINTS_LOCAL = Object.freeze([
   GITHUB_PROXY_ENDPOINT,
   `${GITHUB_PROXY_ENDPOINT}/`,
   `${GITHUB_PROXY_ENDPOINT}.js`,
@@ -33,8 +36,8 @@ function isProxyResponse(resp) {
   return resp?.headers?.get(GITHUB_PROXY_HEADER) === "true";
 }
 
-function pushCandidates(target, originBase) {
-  PROXY_ENDPOINT_VARIANTS.forEach((endpoint) => {
+function pushCandidates(target, originBase, endpoints) {
+  endpoints.forEach((endpoint) => {
     target.push(`${originBase}${endpoint}`);
   });
 }
@@ -48,18 +51,19 @@ function getProxyCandidates() {
 
     // Prioriza mesma origem para deploy normal (Vercel/producao).
     if (isHttpOrigin) {
-      pushCandidates(candidates, origin);
+      const isLocalHostname = hostname === "127.0.0.1" || hostname === "localhost";
+      const endpoints = isLocalHostname ? PROXY_ENDPOINTS_LOCAL : PROXY_ENDPOINTS_PRODUCTION;
+      pushCandidates(candidates, origin, endpoints);
 
       // Fallback local sem misturar localhost <-> 127.0.0.1 para evitar CORS cruzado desnecessario.
-      const isLocalHostname = hostname === "127.0.0.1" || hostname === "localhost";
       if (isLocalHostname && port !== "3000") {
-        pushCandidates(candidates, `${protocol}//${hostname}:3000`);
+        pushCandidates(candidates, `${protocol}//${hostname}:3000`, endpoints);
       }
     }
   }
 
   if (!candidates.length) {
-    pushCandidates(candidates, "http://127.0.0.1:3000");
+    pushCandidates(candidates, "http://127.0.0.1:3000", PROXY_ENDPOINTS_LOCAL);
   }
 
   return [...new Set(candidates)];
@@ -121,33 +125,28 @@ export async function githubGet(urlGithub, options = {}) {
 
   const requestPromise = (async () => {
     const candidates = getProxyCandidates();
-    let lastResponse = null;
-
     for (const proxyBaseUrl of candidates) {
+      let resp;
+
       try {
-        const resp = await fetchViaProxy(proxyBaseUrl, urlGithub);
-
-        // Se nao for nosso proxy, tenta o proximo candidato.
-        if (!isProxyResponse(resp)) {
-          continue;
-        }
-
-        lastResponse = resp;
-
-        if (!resp.ok) {
-          await parseErrorResponse(resp, urlGithub);
-        }
-
-        const json = await resp.json();
-        responseCache.set(cacheKey, json);
-        return json;
+        resp = await fetchViaProxy(proxyBaseUrl, urlGithub);
       } catch {
         // endpoint indisponivel, tenta proximo
+        continue;
       }
-    }
 
-    if (lastResponse && !lastResponse.ok) {
-      await parseErrorResponse(lastResponse, urlGithub);
+      // Se nao for nosso proxy, tenta o proximo candidato.
+      if (!isProxyResponse(resp)) {
+        continue;
+      }
+
+      if (!resp.ok) {
+        await parseErrorResponse(resp, urlGithub);
+      }
+
+      const json = await resp.json();
+      responseCache.set(cacheKey, json);
+      return json;
     }
 
     throw new Error(PROXY_HELP_MESSAGE);
