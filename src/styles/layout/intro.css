@@ -93,6 +93,15 @@
   max-width: 10ch;
 }
 
+@media (max-width: 520px) {
+  .intro__titulo {
+    font-size: clamp(2.2rem, 10.5vw, 3.2rem);
+    line-height: 0.94;
+    letter-spacing: -0.03em;
+    max-width: 12ch;
+  }
+}
+
 .intro__titulo-gradiente {
   width: fit-content;
   background-image: linear-gradient(
