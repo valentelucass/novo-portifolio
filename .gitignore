@@ -36,4 +36,4 @@ coverage/
 .DS_Store
 Thumbs.db
 *.ide/
-.vscode/settings.json
+.vscode/
