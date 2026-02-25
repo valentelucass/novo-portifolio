@@ -23,7 +23,7 @@ function criarEstrutura({ downloadHref, downloadFileName }) {
 export class CurriculoFolder {
   constructor({
     container,
-    downloadHref = "./public/curriculo-lucas-andrade.pdf",
+    downloadHref = "/public/curriculo-lucas-andrade.pdf",
     downloadFileName = "curriculo-lucas-andrade.pdf",
   }) {
     this.container = container;

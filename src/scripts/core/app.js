@@ -12,7 +12,7 @@ import { LogoLoop } from "../components/projetos/logoLoop.js";
 import { CardsGithub } from "../components/projetos/cardsGithub.js";
 import { SkillsGithub } from "../components/projetos/skillsGithub.js";
 
-const URL_GSAP_LOCAL = "./public/vendor/gsap.min.js";
+const URL_GSAP_LOCAL = "/public/vendor/gsap.min.js";
 const URL_GSAP_CDN = "https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js";
 
 const DARK_VEIL_OPTIONS = Object.freeze({
@@ -62,7 +62,7 @@ const CONTATO_ITEMS = Object.freeze([
     external: true,
   },
   {
-    link: "./public/curriculo-lucas-andrade.pdf",
+    link: "/public/curriculo-lucas-andrade.pdf",
     label: "Curriculo",
     color: "green",
     icon: "file",
@@ -71,7 +71,7 @@ const CONTATO_ITEMS = Object.freeze([
 ]);
 
 const CURRICULO_OPTIONS = Object.freeze({
-  downloadHref: "./public/curriculo-lucas-andrade.pdf",
+  downloadHref: "/public/curriculo-lucas-andrade.pdf",
   downloadFileName: "curriculo-lucas-andrade.pdf",
 });
 

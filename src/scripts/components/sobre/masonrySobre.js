@@ -11,17 +11,17 @@
 // position: onde ancorar o background para não cortar rosto
 // height: altura base (relativa a largura 600px — será escalonada)
 const FOTOS = [
-  { id: "f1", src: "./public/foto (1).jpeg", height: 450, position: "center center" }, // cartão na mão — close-up ok
-  { id: "f2", src: "./public/foto (2).jpeg", height: 260, position: "center center" }, // palco/evento — landscape
-  { id: "f3", src: "./public/foto (3).jpeg", height: 550, position: "center center" }, // setup computador — landscape
-  { id: "f4", src: "./public/foto (4).jpeg", height: 270, position: "center center" }, // evento/multidão — landscape
-  { id: "f5", src: "./public/foto (5).jpeg", height: 390, position: "top center" }, // dupla — landscape
-  { id: "f6", src: "./public/foto (6).jpeg", height: 400, position: "top center" }, // trilho trem — landscape
-  { id: "f7", src: "./public/foto (7).jpeg", height: 440, position: "top center" }, // grupo pessoas — landscape
-  { id: "f8", src: "./public/foto (8).jpeg", height: 850, position: "top center" }, // homem oracle — landscape
-  { id: "f9", src: "./public/foto (9).jpeg", height: 550, position: "center center" }, // homem computador — landscape
-  { id: "f10", src: "./public/foto (10).jpeg", height: 860, position: "center center" }, // homem praia — landscape
-  { id: "f11", src: "./public/foto (11).jpeg", height: 890, position: "top center" }, // homem frente computador — landscape
+  { id: "f1", src: "/public/foto (1).jpeg", height: 450, position: "center center" }, // cartão na mão — close-up ok
+  { id: "f2", src: "/public/foto (2).jpeg", height: 260, position: "center center" }, // palco/evento — landscape
+  { id: "f3", src: "/public/foto (3).jpeg", height: 550, position: "center center" }, // setup computador — landscape
+  { id: "f4", src: "/public/foto (4).jpeg", height: 270, position: "center center" }, // evento/multidão — landscape
+  { id: "f5", src: "/public/foto (5).jpeg", height: 390, position: "top center" }, // dupla — landscape
+  { id: "f6", src: "/public/foto (6).jpeg", height: 400, position: "top center" }, // trilho trem — landscape
+  { id: "f7", src: "/public/foto (7).jpeg", height: 440, position: "top center" }, // grupo pessoas — landscape
+  { id: "f8", src: "/public/foto (8).jpeg", height: 850, position: "top center" }, // homem oracle — landscape
+  { id: "f9", src: "/public/foto (9).jpeg", height: 550, position: "center center" }, // homem computador — landscape
+  { id: "f10", src: "/public/foto (10).jpeg", height: 860, position: "center center" }, // homem praia — landscape
+  { id: "f11", src: "/public/foto (11).jpeg", height: 890, position: "top center" }, // homem frente computador — landscape
 ];
 
 function getColumns() {

@@ -7,6 +7,16 @@
       "maxDuration": 10
     }
   },
+  "rewrites": [
+    {
+      "source": "/favicon.ico",
+      "destination": "/public/favicon.svg"
+    },
+    {
+      "source": "/apple-touch-icon.png",
+      "destination": "/public/favicon.svg"
+    }
+  ],
   "headers": [
     {
       "source": "/(.*)",

@@ -141,9 +141,11 @@ function handleStatic(req, res, requestUrl) {
     return;
   }
 
-  const pathname = requestUrl.pathname === "/favicon.ico"
-    ? "/public/favicon.svg"
-    : requestUrl.pathname;
+  const iconAliases = {
+    "/favicon.ico": "/public/favicon.svg",
+    "/apple-touch-icon.png": "/public/favicon.svg",
+  };
+  const pathname = iconAliases[requestUrl.pathname] || requestUrl.pathname;
 
   const targetPath = safeResolvePath(pathname);
   if (!targetPath || !fs.existsSync(targetPath) || !fs.statSync(targetPath).isFile()) {
