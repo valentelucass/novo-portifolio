@@ -1,6 +1,8 @@
 {
   "version": 2,
-  "cleanUrls": true,
+  "framework": null,
+  "buildCommand": "npm run build",
+  "outputDirectory": "dist",
   "trailingSlash": false,
   "functions": {
     "api/*.js": {
@@ -8,6 +10,10 @@
     }
   },
   "rewrites": [
+    {
+      "source": "/",
+      "destination": "/index.html"
+    },
     {
       "source": "/favicon.ico",
       "destination": "/public/favicon.svg"
