@@ -5,6 +5,7 @@
  */
 body {
   font-family: "Space Grotesk", sans-serif;
+  background-color: #000;
   background:
     radial-gradient(62% 58% at 20% 0%, rgba(82, 39, 255, 0.22), transparent 72%),
     radial-gradient(48% 42% at 80% -6%, rgba(255, 159, 252, 0.16), transparent 70%),

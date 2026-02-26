@@ -112,7 +112,8 @@
     position: relative;
     
     padding-block: 24px;
-    margin-block: -24px;
+    margin-top: -24px;
+    margin-bottom: 0;
     overflow: visible;
 }
 
@@ -177,7 +178,8 @@
     -webkit-overflow-scrolling: touch;
     scrollbar-width: none;
     padding-block: 22px;
-    margin-block: -22px;
+    margin-top: -22px;
+    margin-bottom: 0;
     padding-inline: 4px;
     will-change: scroll-position;
 }
@@ -503,6 +505,20 @@
 @media (min-width: 900px) {
     .ghc-card {
         flex: 0 0 calc((100% - 2 * 1.2rem) / 3);
+    }
+}
+
+@media (hover: none) and (pointer: coarse) {
+    .ghc-track {
+        scroll-snap-type: x proximity;
+        touch-action: auto;
+    }
+}
+
+@media (max-width: 720px) {
+    .ghc-row__count,
+    .ghc-row__nav {
+        display: none !important;
     }
 }
 

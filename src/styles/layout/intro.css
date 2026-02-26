@@ -94,6 +94,20 @@
 }
 
 @media (max-width: 520px) {
+  .intro::before {
+    background:
+      radial-gradient(72% 62% at 22% 8%, rgba(82, 39, 255, 0.38), transparent 72%),
+      radial-gradient(60% 48% at 82% 2%, rgba(255, 159, 252, 0.28), transparent 70%),
+      linear-gradient(180deg, rgba(3, 3, 8, 0.76) 0%, rgba(4, 4, 6, 0.92) 100%);
+  }
+
+  .intro__fx {
+    top: -22vh;
+    right: -24vw;
+    bottom: -4vh;
+    left: -24vw;
+  }
+
   .intro__titulo {
     font-size: clamp(2.2rem, 10.5vw, 3.2rem);
     line-height: 0.94;
